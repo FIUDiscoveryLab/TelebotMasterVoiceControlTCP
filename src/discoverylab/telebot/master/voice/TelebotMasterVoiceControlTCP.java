@@ -39,11 +39,12 @@ public class TelebotMasterVoiceControlTCP extends CoreMasterTCPComponent impleme
 
 	@Override
 	public void callback(String data) {
+		System.out.println(":::DATA::: " + data );
 		BitVoicerModel bitVoicerInstance = (BitVoicerModel) parser.parse(data);
 		
 		LOGI(TAG, "Data: " + data);
 		
-		callbackInterface.callback(bitVoicerInstance);
+		//callbackInterface.callback(bitVoicerInstance);
 		
 		instance.voiceCommand = bitVoicerInstance.getVoiceCommand();
 		writer.write(instance, instance_handle);

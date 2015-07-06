@@ -10,7 +10,8 @@ public class TelebotMasterVoiceControlTCPTest {
 	public static void main(String args[]){
 		
 		// 1. INITIATE Master Component
-		TelebotMasterVoiceControlTCP telebotMasterVoice = new TelebotMasterVoiceControlTCP(5005);
+		TelebotMasterVoiceControlTCP telebotMasterVoice = new TelebotMasterVoiceControlTCP(5010);
+		telebotMasterVoice.initiate();
 		
 		// 2. INITIATE Transmission PROTOCOL
 		telebotMasterVoice.initiateTransmissionProtocol(
