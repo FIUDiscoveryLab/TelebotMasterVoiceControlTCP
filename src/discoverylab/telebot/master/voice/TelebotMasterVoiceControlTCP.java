@@ -12,8 +12,9 @@ import discoverylab.telebot.master.core.socket.CoreServerSocket;
 import discoverylab.telebot.master.voice.model.BitVoicerModel;
 import discoverylab.telebot.master.voice.parser.BitVoicerParser;
 
-public class TelebotMasterVoiceControlTCP extends CoreMasterTCPComponent implements CoreServerSocket.CallbackInterface{
+public class TelebotMasterVoiceControlTCP extends CoreMasterTCPComponent {
 
+	
 	public static String TAG = makeLogTag("TelebotMasterVoiceControlTCP");
 	private CallbackInterface callbackInterface;
 	private BitVoicerParser parser;
@@ -25,7 +26,6 @@ public class TelebotMasterVoiceControlTCP extends CoreMasterTCPComponent impleme
 	
 	public TelebotMasterVoiceControlTCP(int portNumber) {
 		super(portNumber);
-		
 		parser = new BitVoicerParser();
 	}
 	
@@ -39,13 +39,9 @@ public class TelebotMasterVoiceControlTCP extends CoreMasterTCPComponent impleme
 
 	@Override
 	public void callback(String data) {
-		System.out.println(":::DATA::: " + data );
+//		callbackInterface.callback(new BitVoicerModel(data));
 		BitVoicerModel bitVoicerInstance = (BitVoicerModel) parser.parse(data);
-		
 		LOGI(TAG, "Data: " + data);
-		
-		//callbackInterface.callback(bitVoicerInstance);
-		
 		instance.voiceCommand = bitVoicerInstance.getVoiceCommand();
 		writer.write(instance, instance_handle);
 	}
