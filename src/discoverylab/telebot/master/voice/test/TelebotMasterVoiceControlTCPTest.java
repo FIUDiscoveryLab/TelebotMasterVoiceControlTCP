@@ -8,6 +8,12 @@ import discoverylab.telebot.master.voice.TelebotMasterVoiceControlTCP;
 import discoverylab.telebot.master.voice.TelebotMasterVoiceControlTCP.CallbackInterface;
 import discoverylab.telebot.master.voice.model.BitVoicerModel;
 
+/**
+ * TelebotMasterVoiceControlTCPTest
+ * @author Irvin Steve Cardenas
+ * 
+ * Driver Class for testing TelebotMasterVoiceControlTCPTest
+ */
 public class TelebotMasterVoiceControlTCPTest /*implements CallbackInterface*/ {
 	
 	public static String TAG = makeLogTag("TelebotMasterVoiceControlTCPTest");

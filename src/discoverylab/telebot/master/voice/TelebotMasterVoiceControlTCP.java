@@ -12,10 +12,17 @@ import discoverylab.telebot.master.core.socket.CoreServerSocket;
 import discoverylab.telebot.master.voice.model.BitVoicerModel;
 import discoverylab.telebot.master.voice.parser.BitVoicerParser;
 
+/**
+ * TelebotMasterVoiceControlTCP
+ * @author Irvin Steve Cardenas
+ *
+ * Concrete implementation of a CoreMasterTCPComponent for an Arm Device that uses socket connection
+ * The SocketEventListener callback(String data) method, from CoreMasterTCPComponent, is  implemented here
+ */
 public class TelebotMasterVoiceControlTCP extends CoreMasterTCPComponent {
-
 	
 	public static String TAG = makeLogTag("TelebotMasterVoiceControlTCP");
+	
 	private CallbackInterface callbackInterface;
 	private BitVoicerParser parser;
 	private DDSCommunicator communicator;
