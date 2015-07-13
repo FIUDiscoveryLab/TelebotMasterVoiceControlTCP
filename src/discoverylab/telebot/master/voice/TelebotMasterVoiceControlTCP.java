@@ -2,6 +2,8 @@ package discoverylab.telebot.master.voice;
 
 import static discoverylab.util.logging.LogUtils.*;
 
+import javax.swing.SwingUtilities;
+
 import com.rti.dds.infrastructure.InstanceHandle_t;
 
 import TelebotDDSCore.DDSCommunicator;
@@ -39,15 +41,21 @@ public class TelebotMasterVoiceControlTCP extends CoreMasterTCPComponent impleme
 
 	@Override
 	public void callback(String data) {
-		System.out.println(":::DATA::: " + data );
-		BitVoicerModel bitVoicerInstance = (BitVoicerModel) parser.parse(data);
 		
-		LOGI(TAG, "Data: " + data);
-		
-		//callbackInterface.callback(bitVoicerInstance);
-		
-		instance.voiceCommand = bitVoicerInstance.getVoiceCommand();
-		writer.write(instance, instance_handle);
+        SwingUtilities.invokeLater(new Runnable()
+        {
+            @Override public void run() {
+        		System.out.println(":::DATA::: " + data );
+        		BitVoicerModel bitVoicerInstance = (BitVoicerModel) parser.parse(data);
+        		
+        		LOGI(TAG, "Data: " + data);
+        		
+        		//callbackInterface.callback(bitVoicerInstance);
+        		
+        		instance.voiceCommand = bitVoicerInstance.getVoiceCommand();
+        		writer.write(instance, instance_handle);
+           }
+        });
 	}
 
 	/**
